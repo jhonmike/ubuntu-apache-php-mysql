@@ -1,5 +1,7 @@
 FROM ubuntu:16.04
 
+ENV DEBIAN_FRONTEND noninteractive
+
 RUN \
   apt-get update
 
@@ -35,9 +37,9 @@ RUN apt-get install -y \
     && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin/ --filename=composer
 
 # Install MySQL.
-ENV MYSQL_PASS=root
+ENV MYSQL_ROOT_PASSWORD=root
 
 RUN \
-  apt-get install -y mysql-server && \
+  apt-get install -y mysql-server
 
 EXPOSE 80 443 3306
